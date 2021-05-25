@@ -3,11 +3,14 @@
  * 200万以下の全ての素数の和を求めよ.
  */
 const main = (target) => {
-  let sum = 2;
-  for (let num = 3; num <= target; num+=2) {
-    console.log(num)
-    if (checkPrimeNum(num)) {
-      sum += num;
+  let num = Math.floor(target / 6) + 1;
+  let sum = 2 + 3;
+  for (let n = 1; n <= num; n++) {
+    if (checkPrimeNum(6 * n - 1) && 6 * n - 1 <= target) {
+      sum += 6 * n - 1;
+    }
+    if (checkPrimeNum(6 * n + 1)&& 6 * n - 1 <= target) {
+      sum += 6 * n + 1;
     }
   }
   return sum;
@@ -24,4 +27,3 @@ const checkPrimeNum = (number) => {
 
 const target = 2000000;
 console.log("答え：", main(target));
-// 142913828922
